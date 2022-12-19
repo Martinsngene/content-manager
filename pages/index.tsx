@@ -1,17 +1,14 @@
-import Footer from "components/Footer";
-import Navbar from "components/Navbar";
+import Layout from "components/Layout";
 import NewsLetter from "components/NewsLetter";
 import ResourceHighlights from "components/ResourceHighlights";
 import ResourceList from "components/ResourceList";
 
 export default function Home() {
   return (
-    <div>
-      <Navbar />
+    <Layout>
       <ResourceHighlights />
       <NewsLetter />
       <ResourceList />
-      <Footer />
-    </div>
+    </Layout>
   );
 }
