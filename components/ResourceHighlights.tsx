@@ -11,7 +11,7 @@ const ResourceHighlights = ({ resources }: ResourceHighlightsPropsI) => {
     <section className='hero '>
       <div className='hero-body'>
         <div className='container'>
-          {resources.map((resource: ResourcesTypes, index: number) => {
+          {resources.map((resource: ResourcesTypes) => {
             return (
               <section key={resource.id} className='section'>
                 <div className='columns'>

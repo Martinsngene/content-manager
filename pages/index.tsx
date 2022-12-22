@@ -9,9 +9,9 @@ import ResourceList from "components/ResourceList";
 export default function Home() {
   return (
     <Layout>
-      <ResourceHighlights resources={resources} />
+      <ResourceHighlights resources={resources.slice(0, 2)} />
       <NewsLetter />
-      <ResourceList resources={resources} />
+      <ResourceList resources={resources.slice(2)} />
     </Layout>
   );
 }
