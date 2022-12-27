@@ -9,7 +9,6 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 export const Home = ({
   resources,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(resources);
   return (
     <Layout>
       <ResourceHighlights resources={resources.slice(0, 2)} />
@@ -20,9 +19,8 @@ export const Home = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch("http://localhost:3000/api/resources");
+  const response = await fetch("http://localhost:3001/api/resources");
   const data: ResourcesTypes[] = await response.json();
-  console.log(data);
   return {
     props: {
       resources: data,
