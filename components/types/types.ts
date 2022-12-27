@@ -9,5 +9,5 @@ export type ResourcesTypes = {
   priority: number;
   timeToFinish: number;
   active: boolean;
-  createdAt: () => number;
+  createdAt: string;
 };
