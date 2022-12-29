@@ -13,7 +13,7 @@ import {
 
 export const Home = ({
   resources,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <Layout>
       <ResourceHighlights resources={resources.slice(0, 2)} />
@@ -24,28 +24,29 @@ export const Home = ({
 };
 
 // When you use getStaticProps, it is called only once and at build-time
-export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch("http://localhost:3001/api/resources");
-  const data: ResourcesTypes[] = await response.json();
-
-  console.log("Calling getStaticProps");
-  return {
-    props: {
-      resources: data,
-    },
-  };
-};
-
-// When getServerSideProps is used, it called everytime a user visits the page
-// This function call is executed on the server
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const response = await fetch("http://localhost:3000/api/resources");
+// export const getStaticProps: GetStaticProps = async () => {
+//   const response = await fetch("http://localhost:3001/api/resources");
 //   const data: ResourcesTypes[] = await response.json();
+//   console.log("Calling getStaticProps");
 //   return {
 //     props: {
 //       resources: data,
 //     },
 //   };
 // };
+
+// When getServerSideProps is used, it called everytime a user visits the page
+// This function call is executed on the server
+// Always serves fresh data
+export const getServerSideProps: GetServerSideProps = async () => {
+  const response = await fetch("http://localhost:3000/api/resources");
+  const data: ResourcesTypes[] = await response.json();
+  // console.log("Calling GetServerSideProps");
+  return {
+    props: {
+      resources: data,
+    },
+  };
+};
 
 export default Home;
