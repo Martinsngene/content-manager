@@ -39,9 +39,9 @@ export const Home = ({
 // This function call is executed on the server
 // Always serves fresh data
 export const getServerSideProps: GetServerSideProps = async () => {
-  const response = await fetch("http://localhost:3000/api/resources");
+  const response = await fetch("http://localhost:3001/api/resources");
   const data: ResourcesTypes[] = await response.json();
-  // console.log("Calling GetServerSideProps");
+  console.log(data);
   return {
     props: {
       resources: data,
